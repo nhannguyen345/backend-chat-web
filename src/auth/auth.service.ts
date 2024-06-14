@@ -29,4 +29,10 @@ export class AuthService {
             throw new UnauthorizedException();
         }
     }
+
+    async checkToken(token: string): Promise<any> {
+        return {
+            checked_token: await this.jwtService.verifyAsync(token),
+        };
+    }
 }

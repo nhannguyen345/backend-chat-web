@@ -6,10 +6,11 @@ import { User } from './users.model';
 @Injectable()
 export class UsersService {
     constructor(@InjectModel('user') private readonly userModel: Model<User>) {}
-    async insertUser(userName: string, password: string) {
+    async insertUser(userName: string, password: string, fullname: string) {
         const username = userName.toLowerCase();
         const newUser = new this.userModel({
             username,
+            fullname,
             password,
         });
         await newUser.save();

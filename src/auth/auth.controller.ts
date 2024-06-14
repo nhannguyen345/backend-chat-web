@@ -17,4 +17,10 @@ export class AuthController {
     getProfile(@Request() req: any) {
         return req.user;
     }
+
+    @HttpCode(HttpStatus.OK)
+    @Post('cktoken')
+    checkToken(@Body() checkTokenDto: Record<string, any>) {
+        return this.authService.checkToken(checkTokenDto.token);
+    }
 }
